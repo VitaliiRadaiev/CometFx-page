@@ -752,6 +752,7 @@ img {
   background: #101010 url("../img/photo/main-bg.jpg") center no-repeat;
   background-size: cover;
   overflow: hidden;
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -808,6 +809,16 @@ img {
   font-size: 4.5rem;
   line-height: 1.17em;
   text-transform: uppercase;
+  font-weight: 400;
+}
+
+.title-3 {
+  font-family: "Roboto", sans-serif;
+  color: #F8F8F8;
+  font-size: 2.4rem;
+  line-height: 1.16em;
+  text-transform: uppercase;
+  font-weight: 400;
 }
 
 .btn-default {
@@ -827,6 +838,11 @@ img {
   transition: all .2s ease;
 }
 
+.btn-default > span {
+  position: relative;
+  z-index: 2;
+}
+
 .btn-default:after {
   position: absolute;
   content: '';
@@ -838,7 +854,19 @@ img {
   -o-transition: all .2s ease;
   transition: all .2s ease;
   background: #E3B04B;
-  z-index: -1;
+  z-index: 1;
+}
+
+.link {
+  font-family: "RobotoSlab", sans-serif;
+  color: #E3B04B;
+  font-weight: bold;
+  font-size: 1.4rem;
+  line-height: 1.28em;
+  text-decoration: underline;
+  -webkit-transition: all .2s ease;
+  -o-transition: all .2s ease;
+  transition: all .2s ease;
 }
 
 /**
@@ -2136,6 +2164,10 @@ textarea.input {
   transition: all .2s ease;
 }
 
+.menu__item > a.active {
+  color: #E3B04B;
+}
+
 .main-slider .swiper-container {
   text-align: center;
   padding: 2rem 2rem 4rem;
@@ -2145,7 +2177,6 @@ textarea.input {
 .main-slider__title {
   margin-bottom: 0.8rem;
   color: #F8F8F8;
-  font-weight: 400;
 }
 
 .main-slider__subtitle {
@@ -2159,6 +2190,10 @@ textarea.input {
 
 .main-slider__btn-wrap > a:not(:last-child) {
   margin-right: 3.2rem;
+}
+
+.main-slider .swiper-container._margin-bottom {
+  margin-bottom: 30rem;
 }
 
 .main-slider .swiper-pagination .swiper-pagination-bullet {
@@ -2254,7 +2289,7 @@ textarea.input {
 }
 
 .aside__body-form {
-  margin-top: 3.2rem;
+  margin-top: 0rem;
   overflow: hidden;
   height: 0;
   visibility: hidden;
@@ -2262,12 +2297,15 @@ textarea.input {
   -webkit-transition: opacity .2s ease;
   -o-transition: opacity .2s ease;
   transition: opacity .2s ease;
+  padding: 0rem;
 }
 
 .aside__body-form.active {
   height: auto;
   visibility: visible;
   opacity: 1;
+  padding: 2.5rem;
+  margin-top: 3.2rem;
 }
 
 .aside-slider .swiper-slide {
@@ -2306,10 +2344,11 @@ textarea.input {
   font-size: 1.6rem;
   line-height: 1.32em;
   padding: 0 1.5rem;
+  margin: 1px 0;
 }
 
 .aside-slider .swiper-pagination {
-  bottom: 0.9rem;
+  bottom: 0.2rem;
 }
 
 .aside-slider .swiper-pagination .swiper-pagination-bullet {
@@ -2344,10 +2383,6 @@ textarea.input {
 .aside-slider .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active:before {
   background: #E3B04B;
   opacity: 1;
-}
-
-.aside-form {
-  padding: 2.5rem;
 }
 
 .aside-form__item {
@@ -2446,6 +2481,148 @@ textarea.input {
   line-height: 2.4rem;
   letter-spacing: 0.015rem;
   color: rgba(248, 248, 248, 0.8);
+}
+
+.block-cards {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+  min-width: 0;
+}
+
+.block-cards .swiper-wrapper {
+  height: 100%;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  min-width: 0;
+}
+
+.block-cards .swiper-slide {
+  margin: 0 1.5rem;
+  position: relative;
+  width: 100%;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 auto;
+          flex: 0 1 auto;
+  max-width: 28rem;
+}
+
+.block-cards .swiper-slide:nth-child(2) .price-card {
+  -webkit-transform: translateY(68%);
+      -ms-transform: translateY(68%);
+          transform: translateY(68%);
+}
+
+.block-cards .swiper-slide:nth-child(3) .price-card {
+  -webkit-transform: translateY(64%);
+      -ms-transform: translateY(64%);
+          transform: translateY(64%);
+}
+
+.block-cards .price-card {
+  position: absolute;
+  bottom: 0rem;
+  left: 0;
+  width: 100%;
+  overflow: auto;
+  -webkit-transition: -webkit-transform .4s ease;
+  transition: -webkit-transform .4s ease;
+  -o-transition: transform .4s ease;
+  transition: transform .4s ease;
+  transition: transform .4s ease, -webkit-transform .4s ease;
+  -webkit-transform: translateY(66%);
+      -ms-transform: translateY(66%);
+          transform: translateY(66%);
+}
+
+@-webkit-keyframes anim {
+  from {
+    -webkit-transform: translateY(30%);
+            transform: translateY(30%);
+  }
+
+  to {
+    -webkit-transform: translateY(0%);
+            transform: translateY(0%);
+  }
+}
+
+@keyframes anim {
+  from {
+    -webkit-transform: translateY(30%);
+            transform: translateY(30%);
+  }
+
+  to {
+    -webkit-transform: translateY(0%);
+            transform: translateY(0%);
+  }
+}
+
+.price-card {
+  pointer-events: auto;
+  background: #101010;
+  border: 1px solid transparent;
+  text-align: center;
+  padding: 2.2rem 0 2.4rem;
+  max-width: 28rem;
+}
+
+.price-card__title {
+  padding: 0rem 1.5rem;
+  margin-bottom: 1.3rem;
+}
+
+.price-card__subtitle {
+  padding: 0.3rem 1.5rem;
+  background: rgba(227, 176, 75, 0.2);
+  font-family: "RobotoSlab", sans-serif;
+  font-weight: 300;
+  color: #E3B04B;
+  font-size: 2rem;
+  line-height: 1.3em;
+}
+
+.price-card__list > li {
+  padding: 2.5rem 1.5rem;
+}
+
+.price-card__list > li:not(:last-child) {
+  border-bottom: 2px solid #000;
+  padding-bottom: 2.4rem;
+}
+
+.price-card__label {
+  color: rgba(248, 248, 248, 0.5);
+  font-family: "RobotoSlab", sans-serif;
+  font-weight: 300;
+  font-size: 1.4rem;
+  line-height: 1.28em;
+}
+
+.price-card__text {
+  color: #F8F8F8;
+  font-family: "RobotoSlab", sans-serif;
+  font-weight: 300;
+  font-size: 1.8rem;
+  line-height: 1.333em;
+}
+
+.price-card__btn .btn-default {
+  text-transform: none;
+}
+
+.cards-block .swiper-slide {
+  width: auto;
 }
 
 .select {
@@ -2569,6 +2746,11 @@ textarea.input {
     opacity: 0.8;
   }
 
+  .link:hover {
+    color: rgba(227, 176, 75, 0.5);
+    text-decoration: underline;
+  }
+
   .header__burger {
     display: none;
   }
@@ -2581,6 +2763,15 @@ textarea.input {
 
   .menu__item > a:hover {
     background: rgba(255, 255, 255, 0.1);
+  }
+
+  .block-cards .price-card:hover {
+    bottom: 0 !important;
+    border: 1px solid #E3B04B;
+    max-height: 100%;
+    -webkit-transform: translateY(0%) !important;
+        -ms-transform: translateY(0%) !important;
+            transform: translateY(0%) !important;
   }
 
   .select__option:hover {
@@ -2605,7 +2796,7 @@ textarea.input {
     top: 0;
     left: -28.5rem;
     height: 100%;
-    z-index: 2;
+    z-index: 3;
     -webkit-transition: all .4s ease;
     -o-transition: all .4s ease;
     transition: all .4s ease;
@@ -2629,6 +2820,44 @@ textarea.input {
 
   .menu__item:not(:last-child) {
     margin-right: 0;
+  }
+
+  .main-slider .swiper-container._margin-bottom {
+    margin-bottom: 7rem;
+  }
+
+  .block-cards {
+    position: relative;
+    height: auto;
+    padding-bottom: 5rem;
+  }
+
+  .block-cards .swiper-wrapper {
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+  }
+
+  .block-cards .swiper-slide {
+    -ms-flex-negative: 0;
+        flex-shrink: 0;
+    margin: 0;
+    width: auto;
+    max-width: none;
+  }
+
+  .block-cards .swiper-slide .price-card {
+    -webkit-transform: none !important;
+        -ms-transform: none !important;
+            transform: none !important;
+  }
+
+  .block-cards .price-card {
+    position: static;
+  }
+
+  .price-card {
+    min-width: 28rem;
   }
 }
 

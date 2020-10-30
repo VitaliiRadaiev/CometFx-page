@@ -283,10 +283,9 @@ function selects_update_all() {
 };
 // ==  slider ==========================================================================
 {
-	let slider = document.querySelectorAll('.main-slider');
-	if(slider.length>0) {
-		slider.forEach(item => {
-			var mySwiper = new Swiper(item.querySelector('.swiper-container'), {
+	let slider = document.querySelector('.main-slider');
+	if(slider) {
+			let mySwiper = new Swiper(slider.querySelector('.swiper-container'), {
 			slidesPerView:1,
 			loop: true,
 			speed: 600,
@@ -295,11 +294,10 @@ function selects_update_all() {
 			},
 			spaceBetween: 35,
 			pagination: {
-			    el: item.querySelector('.swiper-pagination'),
+			    el: slider.querySelector('.swiper-pagination'),
 			    clickable: true,
 			  },
 			})
-		})
 	}
 }
 // == and  slider ==========================================================================;
@@ -307,7 +305,7 @@ function selects_update_all() {
 {
 	let slider = document.querySelector('.aside-slider');
 	if(slider) {
-			var mySwiper = new Swiper(slider.querySelector('.swiper-container'), {
+			let mySwiper = new Swiper(slider.querySelector('.swiper-container'), {
 			slidesPerView:1,
 			autoHeight: true,
 			loop: true,
@@ -323,6 +321,45 @@ function selects_update_all() {
 	}
 }
 // == and  slider ==========================================================================;
+{
+	const slider = document.querySelector('.block-cards.swiper-container');
+	let mySwiper;
+
+	function mobileSlider() {
+		if(document.documentElement.clientWidth <= 991 && slider.dataset.mobile == 'false') {
+			mySwiper = new Swiper(slider, {
+				slidesPerView: 'auto',
+				spaceBetween: 15,
+				centeredSlides: true,
+				on: {
+				  init: function () {
+				    console.log('swiper initialized');
+				  },
+				},
+			});
+
+			slider.dataset.mobile = 'true';
+
+			mySwiper.slideNext(0);
+		}
+
+		if(document.documentElement.clientWidth > 991) {
+			slider.dataset.mobile = 'false';
+
+			if(slider.classList.contains('swiper-container-initialized')) {
+				mySwiper.destroy();
+			}
+		}
+	}
+
+	mobileSlider();
+
+	window.addEventListener('resize', () => {
+		mobileSlider();
+	})
+
+	console.dir(mySwiper)
+};
 // === aside handler ==================================================================
 {
 	let aside = document.querySelector('.aside');
@@ -361,6 +398,15 @@ function selects_update_all() {
 	}
 }
 // === // aside handler ==================================================================
+
+
+// === if there are cards ==================================================================
+let blockCards = document.querySelector('.block-cards');
+ if(blockCards) {
+ 	let mainSlider = document.querySelector('.main-slider .swiper-container');
+ 	mainSlider.classList.add('_margin-bottom');
+ }
+// === // if there are cards ==================================================================
 
 
 });
