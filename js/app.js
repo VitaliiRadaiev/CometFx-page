@@ -468,7 +468,8 @@ function selects_update_all() {
 {
 	let slider = document.querySelector('.main-slider');
 	if(slider) {
-			let mySwiper = new Swiper(slider.querySelector('.swiper-container'), {
+			let mySwiper;
+			mySwiper = new Swiper(slider.querySelector('.swiper-container'), {
 			slidesPerView:1,
 			loop: true,
 			speed: 600,
@@ -480,7 +481,21 @@ function selects_update_all() {
 			    el: slider.querySelector('.swiper-pagination'),
 			    clickable: true,
 			  },
+			 on: {
+			 	slideChange: function() {
+			 		console.log(mySwiper)
+			 	}
+			 } 
 			})
+	}
+
+	let bgSlider = document.querySelector('.bg-slider');
+	if(bgSlider) {
+		let mySwiper = new Swiper(bgSlider.querySelector('.swiper-container'), {
+		slidesPerView:1,
+		loop: true,
+		speed: 600,
+		})
 	}
 }
 // == and  slider ========================================================================== ;
@@ -506,7 +521,25 @@ function selects_update_all() {
 
 			  },
 			}  
-			})
+			});
+
+		slider.addEventListener('click', function(e) {
+			if(e.target.closest('.aside-slider__read-all')) {
+				let btn = e.target.closest('.aside-slider__read-all')
+				let slide = btn.closest('.swiper-slide');
+
+				if(slide.classList.contains('is-open')) {
+					slide.style.maxHeight = '415px';
+					slide.classList.remove('is-open');
+					btn.innerText = "Read All";
+				} else {
+					slide.style.maxHeight = slide.scrollHeight + 'px';
+					slide.classList.add('is-open');
+					slider.querySelector('.swiper-wrapper').style.height = 'auto';
+					btn.innerText = "Close";
+				}
+			}
+		})		
 	}
 }
 // == and  slider ==========================================================================;
@@ -551,9 +584,9 @@ function selects_update_all() {
 
 };
 // === aside handler ==================================================================
-document.body.addEventListener('click', (e) => {
-	console.log(e.target)
-})
+// document.body.addEventListener('click', (e) => {
+// 	console.log(e.target)
+// })
 
 {
 	let aside = document.querySelector('.aside');
@@ -713,6 +746,31 @@ window.addEventListener('scroll', function() {
 	}
 })
 // === // add background mobile head ==================================================================
+
+
+// === footer text handler ==================================================================
+{
+	let statement = document.querySelector('.statement__inner');
+	if(statement) {
+		let btn = statement.querySelector('.statement__btn-close');
+		if(btn) {
+			btn.addEventListener('click', function() {
+
+				if(statement.classList.contains('is-open')) {
+					statement.style.maxHeight = '163px';
+					statement.classList.remove('is-open');
+					btn.innerText = "Read All";
+				} else {
+					statement.style.maxHeight = statement.scrollHeight + 'px';
+					statement.classList.add('is-open');
+					btn.innerText = "Close";
+				}
+
+			})
+		}
+	}
+}
+// === // footer text handler ==================================================================
 
 
 });;
