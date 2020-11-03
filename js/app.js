@@ -551,21 +551,35 @@ function selects_update_all() {
 
 };
 // === aside handler ==================================================================
+document.body.addEventListener('click', (e) => {
+	console.log(e.target)
+})
+
 {
 	let aside = document.querySelector('.aside');
 	if(aside) {
-		let btnOpenClose = aside.querySelector('.aside__btn');
-		btnOpenClose.addEventListener('click', function() {
-			console.log('test')
-			aside.classList.toggle('open');
-		})
+		let btnOpen = document.querySelector('.head-mobile__btn-left');
+		let btnClose = document.querySelector('.aside__close');
+		if(btnOpen) {
+			btnOpen.addEventListener('click', function(e) {
+				if(e.target.closest('.head-mobile__btn-left')) {
+					aside.classList.add('open');
 
-		document.body.addEventListener('click', function(e) {
-			if(!e.target.closest('.aside')) {
-				aside.classList.remove('open');
-			}
-		})
+					if(document.documentElement.clientWidth < 768) {
+						let menu = document.querySelector('.header__body') 
+						menu.classList.remove('open');
+					}
+				}
+			})
+		}
 
+		if(btnClose) {
+			btnClose.addEventListener('click', function(e) {
+				if(e.target.closest('.aside__close')) {
+					aside.classList.remove('open');
+				}
+			})
+		}
 
 		let headTab1 = aside.querySelector('.aside__head-tab_1');
 		let headTab2 = aside.querySelector('.aside__head-tab_2');
@@ -589,6 +603,96 @@ function selects_update_all() {
 }
 // === // aside handler ==================================================================
 
+//Spollers
+function runSpoller() {
+	let spollers = document.querySelectorAll("._spoller");
+	if (spollers.length > 0) {
+		for (let index = 0; index < spollers.length; index++) {
+			const spoller = spollers[index];
+			spoller.addEventListener("click", function (e) {
+				e.preventDefault();
+				if (spoller.classList.contains('_spoller-992') && window.innerWidth > 992) {
+					return false;
+				}
+				if (spoller.classList.contains('_spoller-768') && window.innerWidth > 768) {
+					return false;
+				}
+				if (spoller.closest('._spollers').classList.contains('_one')) {
+					let curent_spollers = spoller.closest('._spollers').querySelectorAll('._spoller');
+					for (let i = 0; i < curent_spollers.length; i++) {
+						let el = curent_spollers[i];
+						if (el != spoller) {
+							el.classList.remove('_active');
+							_slideUp(el.nextElementSibling);
+						}
+					}
+				}
+				spoller.classList.toggle('_active');
+				_slideToggle(spoller.nextElementSibling);
+			});
+		}
+	}
+}
+
+//=================
+
+// === mobile menu handler ==================================================================
+{
+	let menu = document.querySelector('.header__body') 
+	if(menu) {
+		let burger = document.querySelector('.head-mobile__btn-right');
+		if(burger) {
+			burger.addEventListener('click', function() {
+				menu.classList.add('open');
+				if(document.documentElement.clientWidth < 768) {
+					let aside = document.querySelector('.aside');
+					aside.classList.remove('open');
+				}
+			})
+		}
+
+		let btnClose = document.querySelector('.header__close')
+		if(btnClose) {
+			btnClose.addEventListener('click', function() {
+				menu.classList.remove('open');
+			})
+		}
+	}
+
+	let navMenu = document.querySelector('.menu');
+	if(navMenu) {
+		function addClasses() {
+			if(document.documentElement.clientWidth < 992) {
+				navMenu.classList.add('_spollers', '_one');
+				navMenu.querySelectorAll('.menu__item > a').forEach(link => {
+					link.classList.add('_spoller');
+				})
+			}
+		}
+
+		function removeClasses() {
+				navMenu.classList.remove('_spollers', '_one');
+				navMenu.querySelectorAll('.menu__item > a').forEach(link => {
+					link.classList.remove('_spoller');
+				})
+		}
+		addClasses() 
+
+		window.addEventListener('resize', function() {
+			if(document.documentElement.clientWidth < 992) {
+				addClasses()
+				runSpoller();
+			} else {
+				removeClasses()
+			}
+		})
+	}
+	
+}
+
+runSpoller();
+// === // mobile menu handler ==================================================================
+
 
 // === if there are cards ==================================================================
 let blockCards = document.querySelector('.block-cards');
@@ -597,6 +701,18 @@ let blockCards = document.querySelector('.block-cards');
  	mainSlider.classList.add('_margin-bottom');
  }
 // === // if there are cards ==================================================================
+
+
+// === add background mobile head ==================================================================
+window.addEventListener('scroll', function() {
+	let mobileHead = document.querySelector('.head-mobile');
+	if(window.pageYOffset > 10 ) {
+		mobileHead.classList.add('background');
+	} else {
+		mobileHead.classList.remove('background');
+	}
+})
+// === // add background mobile head ==================================================================
 
 
 });;
