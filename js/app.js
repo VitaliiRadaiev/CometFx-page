@@ -1,5 +1,179 @@
 var isMobile = { Android: function () { return navigator.userAgent.match(/Android/i); }, BlackBerry: function () { return navigator.userAgent.match(/BlackBerry/i); }, iOS: function () { return navigator.userAgent.match(/iPhone|iPad|iPod/i); }, Opera: function () { return navigator.userAgent.match(/Opera Mini/i); }, Windows: function () { return navigator.userAgent.match(/IEMobile/i); }, any: function () { return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows()); } };
 
+// Dynamic Adapt v.1
+// HTML data-da="where(uniq class name),position(digi),when(breakpoint)"
+// e.x. data-da="item,2,992"
+
+"use strict";
+
+(function () {
+	let originalPositions = [];
+	let daElements = document.querySelectorAll('[data-da]');
+	let daElementsArray = [];
+	let daMatchMedia = [];
+	//Заполняем массивы
+	if (daElements.length > 0) {
+		let number = 0;
+		for (let index = 0; index < daElements.length; index++) {
+			const daElement = daElements[index];
+			const daMove = daElement.getAttribute('data-da');
+			if (daMove != '') {
+				const daArray = daMove.split(',');
+				const daPlace = daArray[1] ? daArray[1].trim() : 'last';
+				const daBreakpoint = daArray[2] ? daArray[2].trim() : '767';
+				const daType = daArray[3] === 'min' ? daArray[3].trim() : 'max';
+				const daDestination = document.querySelector('.' + daArray[0].trim())
+				if (daArray.length > 0 && daDestination) {
+					daElement.setAttribute('data-da-index', number);
+					//Заполняем массив первоначальных позиций
+					originalPositions[number] = {
+						"parent": daElement.parentNode,
+						"index": indexInParent(daElement)
+					};
+					//Заполняем массив элементов 
+					daElementsArray[number] = {
+						"element": daElement,
+						"destination": document.querySelector('.' + daArray[0].trim()),
+						"place": daPlace,
+						"breakpoint": daBreakpoint,
+						"type": daType
+					}
+					number++;
+				}
+			}
+		}
+		dynamicAdaptSort(daElementsArray);
+
+		//Создаем события в точке брейкпоинта
+		for (let index = 0; index < daElementsArray.length; index++) {
+			const el = daElementsArray[index];
+			const daBreakpoint = el.breakpoint;
+			const daType = el.type;
+
+			daMatchMedia.push(window.matchMedia("(" + daType + "-width: " + daBreakpoint + "px)"));
+			daMatchMedia[index].addListener(dynamicAdapt);
+		}
+	}
+	//Основная функция
+	function dynamicAdapt(e) {
+		for (let index = 0; index < daElementsArray.length; index++) {
+			const el = daElementsArray[index];
+			const daElement = el.element;
+			const daDestination = el.destination;
+			const daPlace = el.place;
+			const daBreakpoint = el.breakpoint;
+			const daClassname = "_dynamic_adapt_" + daBreakpoint;
+
+			if (daMatchMedia[index].matches) {
+				//Перебрасываем элементы
+				if (!daElement.classList.contains(daClassname)) {
+					let actualIndex = indexOfElements(daDestination)[daPlace];
+					if (daPlace === 'first') {
+						actualIndex = indexOfElements(daDestination)[0];
+					} else if (daPlace === 'last') {
+						actualIndex = indexOfElements(daDestination)[indexOfElements(daDestination).length];
+					}
+					daDestination.insertBefore(daElement, daDestination.children[actualIndex]);
+					daElement.classList.add(daClassname);
+				}
+			} else {
+				//Возвращаем на место
+				if (daElement.classList.contains(daClassname)) {
+					dynamicAdaptBack(daElement);
+					daElement.classList.remove(daClassname);
+				}
+			}
+		}
+		customAdapt();
+	}
+
+	//Вызов основной функции
+	dynamicAdapt();
+
+	//Функция возврата на место
+	function dynamicAdaptBack(el) {
+		const daIndex = el.getAttribute('data-da-index');
+		const originalPlace = originalPositions[daIndex];
+		const parentPlace = originalPlace['parent'];
+		const indexPlace = originalPlace['index'];
+		const actualIndex = indexOfElements(parentPlace, true)[indexPlace];
+		parentPlace.insertBefore(el, parentPlace.children[actualIndex]);
+	}
+	//Функция получения индекса внутри родителя
+	function indexInParent(el) {
+		var children = Array.prototype.slice.call(el.parentNode.children);
+		return children.indexOf(el);
+	}
+	//Функция получения массива индексов элементов внутри родителя 
+	function indexOfElements(parent, back) {
+		const children = parent.children;
+		const childrenArray = [];
+		for (let i = 0; i < children.length; i++) {
+			const childrenElement = children[i];
+			if (back) {
+				childrenArray.push(i);
+			} else {
+				//Исключая перенесенный элемент
+				if (childrenElement.getAttribute('data-da') == null) {
+					childrenArray.push(i);
+				}
+			}
+		}
+		return childrenArray;
+	}
+	//Сортировка объекта
+	function dynamicAdaptSort(arr) {
+		arr.sort(function (a, b) {
+			if (a.breakpoint > b.breakpoint) { return -1 } else { return 1 }
+		});
+		arr.sort(function (a, b) {
+			if (a.place > b.place) { return 1 } else { return -1 }
+		});
+	}
+	//Дополнительные сценарии адаптации
+	function customAdapt() {
+		//const viewport_width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+	}
+}());
+
+/*
+let block = document.querySelector('.click');
+block.addEventListener("click", function (e) {
+	alert('Все ок ;)');
+});
+*/
+
+/*
+//Объявляем переменные
+const parent_original = document.querySelector('.content__blocks_city');
+const parent = document.querySelector('.content__column_river');
+const item = document.querySelector('.content__block_item');
+
+//Слушаем изменение размера экрана
+window.addEventListener('resize', move);
+
+//Функция
+function move(){
+	const viewport_width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+	if (viewport_width <= 992) {
+		if (!item.classList.contains('done')) {
+			parent.insertBefore(item, parent.children[2]);
+			item.classList.add('done');
+		}
+	} else {
+		if (item.classList.contains('done')) {
+			parent_original.insertBefore(item, parent_original.children[2]);
+			item.classList.remove('done');
+		}
+	}
+}
+
+//Вызываем функцию
+move();
+
+*/
+
+
 //SlideToggle
 let _slideUp = (target, duration = 500) => {
 	target.style.transitionProperty = 'height, margin, padding';
@@ -81,6 +255,14 @@ $(document).ready(function() {
 	}
 	$('.burger').click((e) => burgerBtnAnimation(e));
 // === Burger Handler =====================================================================	;
+
+
+	// $(".aside__inner").niceScroll({
+	// 	cursorcolor:"#E3B04B",
+	// 	cursorwidth:"5px",
+	// 	background:"rgba(20,20,20,0.3)",
+	// 	cursorborder:"1px solid transparent",
+	// });
 
 // === Проверка, поддержка браузером формата webp ==================================================================
 
@@ -174,6 +356,7 @@ function select_item(select) {
 	const select_selected_option = select.querySelector('option:checked');
 	const select_selected_text = select_selected_option.text;
 	const select_type = select.getAttribute('data-type');
+	console.log(select_selected_option.value)
 
 	if (select_items) {
 		select_items.remove();
@@ -183,7 +366,7 @@ function select_item(select) {
 	if (select_type == 'input') {
 		select_type_content = '<div class="select__value icon-select-arrow"><input autocomplete="off" type="text" name="form[]" value="' + select_selected_text + '" data-error="Ошибка" data-value="' + select_selected_text + '" class="select__input"></div>';
 	} else {
-		select_type_content = '<div class="select__value icon-select-arrow"><span>' + select_selected_text + '</span></div>';
+		select_type_content = '<div class="select__value icon-select-arrow"><span>' + select_selected_option.value + '</span></div>';
 	}
 
 	select_parent.insertAdjacentHTML('beforeend',
@@ -236,7 +419,7 @@ function select_actions(original, select) {
 				select_input.value = select_option_text;
 				original.value = select_option_value;
 			} else {
-				select.querySelector('.select__value').innerHTML = '<span>' + select_option_text + '</span>';
+				select.querySelector('.select__value').innerHTML = '<span>' + select_option_value + '</span>';
 				original.value = select_option_value;
 				select_option.style.display = 'none';
 			}
@@ -289,9 +472,9 @@ function selects_update_all() {
 			slidesPerView:1,
 			loop: true,
 			speed: 600,
-			autoplay: {
-			  delay: 4000,
-			},
+			// autoplay: {
+			//   delay: 4000,
+			// },
 			spaceBetween: 35,
 			pagination: {
 			    el: slider.querySelector('.swiper-pagination'),
@@ -300,7 +483,7 @@ function selects_update_all() {
 			})
 	}
 }
-// == and  slider ==========================================================================;
+// == and  slider ========================================================================== ;
 // ==  slider ==========================================================================
 {
 	let slider = document.querySelector('.aside-slider');
@@ -317,6 +500,12 @@ function selects_update_all() {
 			    el: slider.querySelector('.swiper-pagination'),
 			    clickable: true,
 			  },
+			on: {
+			  slideChange: function () {
+			    //$(".aside__inner").getNiceScroll().resize();
+
+			  },
+			}  
 			})
 	}
 }
@@ -325,40 +514,41 @@ function selects_update_all() {
 	const slider = document.querySelector('.block-cards.swiper-container');
 	let mySwiper;
 
-	function mobileSlider() {
-		if(document.documentElement.clientWidth <= 991 && slider.dataset.mobile == 'false') {
-			mySwiper = new Swiper(slider, {
-				slidesPerView: 'auto',
-				spaceBetween: 15,
-				centeredSlides: true,
-				on: {
-				  init: function () {
-				    console.log('swiper initialized');
-				  },
-				},
-			});
+	if (slider) {
+		function mobileSlider() {
+			if(document.documentElement.clientWidth <= 991 && slider.dataset.mobile == 'false') {
+				mySwiper = new Swiper(slider, {
+					slidesPerView: 'auto',
+					spaceBetween: 15,
+					centeredSlides: true,
+					on: {
+					  init: function () {
+					    console.log('swiper initialized');
+					  },
+					},
+				});
 
-			slider.dataset.mobile = 'true';
+				slider.dataset.mobile = 'true';
 
-			mySwiper.slideNext(0);
-		}
+				mySwiper.slideNext(0);
+			}
 
-		if(document.documentElement.clientWidth > 991) {
-			slider.dataset.mobile = 'false';
+			if(document.documentElement.clientWidth > 991) {
+				slider.dataset.mobile = 'false';
 
-			if(slider.classList.contains('swiper-container-initialized')) {
-				mySwiper.destroy();
+				if(slider.classList.contains('swiper-container-initialized')) {
+					mySwiper.destroy();
+				}
 			}
 		}
+
+		mobileSlider();
+
+		window.addEventListener('resize', () => {
+			mobileSlider();
+		})
 	}
 
-	mobileSlider();
-
-	window.addEventListener('resize', () => {
-		mobileSlider();
-	})
-
-	console.dir(mySwiper)
 };
 // === aside handler ==================================================================
 {
@@ -409,4 +599,4 @@ let blockCards = document.querySelector('.block-cards');
 // === // if there are cards ==================================================================
 
 
-});
+});;
