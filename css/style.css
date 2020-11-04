@@ -2350,6 +2350,9 @@ textarea.input {
 .main-slider__title {
   margin-bottom: 0.8rem;
   color: #F8F8F8;
+  max-width: 780px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .main-slider__subtitle {
@@ -2518,14 +2521,14 @@ textarea.input {
   -webkit-transition: all .4s ease;
   -o-transition: all .4s ease;
   transition: all .4s ease;
-  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#000000+0,101010+100&0+0,1+52 */
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#000000+0,101010+100&0.11+0,1+72 */
   /* FF3.6-15 */
   /* Chrome10-25,Safari5.1-6 */
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0)), color-stop(52%, #080808), to(#101010));
-  background: -o-linear-gradient(top, rgba(0, 0, 0, 0) 0%, #080808 52%, #101010 100%);
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, #080808 52%, #101010 100%);
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.11)), color-stop(72%, #0c0c0c), to(#101010));
+  background: -o-linear-gradient(top, rgba(0, 0, 0, 0.11) 0%, #0c0c0c 72%, #101010 100%);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.11) 0%, #0c0c0c 72%, #101010 100%);
   /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#101010',GradientType=0 );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1c000000', endColorstr='#101010',GradientType=0 );
   /* IE6-9 */
 }
 

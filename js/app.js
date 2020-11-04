@@ -467,6 +467,7 @@ function selects_update_all() {
 // ==  slider ==========================================================================
 {
 	let slider = document.querySelector('.main-slider');
+	let bgSliderData;
 	if(slider) {
 			let mySwiper;
 			mySwiper = new Swiper(slider.querySelector('.swiper-container'), {
@@ -483,7 +484,10 @@ function selects_update_all() {
 			  },
 			 on: {
 			 	slideChange: function() {
-			 		console.log(mySwiper)
+			 		if(mySwiper) {
+			 			console.log(mySwiper.activeIndex)
+			 			bgSliderData.slideTo(mySwiper.activeIndex)
+			 		}
 			 	}
 			 } 
 			})
@@ -491,10 +495,11 @@ function selects_update_all() {
 
 	let bgSlider = document.querySelector('.bg-slider');
 	if(bgSlider) {
-		let mySwiper = new Swiper(bgSlider.querySelector('.swiper-container'), {
+		bgSliderData = new Swiper(bgSlider.querySelector('.swiper-container'), {
 		slidesPerView:1,
 		loop: true,
 		speed: 600,
+		effect: 'fade',
 		})
 	}
 }
@@ -532,6 +537,7 @@ function selects_update_all() {
 					slide.style.maxHeight = '415px';
 					slide.classList.remove('is-open');
 					btn.innerText = "Read All";
+					slider.querySelector('.swiper-wrapper').style.height = 'auto';
 				} else {
 					slide.style.maxHeight = slide.scrollHeight + 'px';
 					slide.classList.add('is-open');
