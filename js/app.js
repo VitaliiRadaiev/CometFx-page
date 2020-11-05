@@ -241,6 +241,44 @@ let _slideToggle = (target, duration = 500) => {
 }
 //========================================
 
+// === anim handler ===========================================
+const animItems = document.querySelectorAll('._anim-items');
+
+if (animItems.length > 0) {
+	window.addEventListener('scroll', animOnScroll);
+	function animOnScroll() {
+		for (let index = 0; index < animItems.length; index++) {
+			const animItem = animItems[index];
+			const animItemHeight = animItem.offsetHeight;
+			const animItemOffset = offset(animItem).top;
+			const animStart = 4;
+
+			let animItemPoint = window.innerHeight - animItemHeight / animStart;
+			if (animItemHeight > window.innerHeight) {
+				animItemPoint = window.innerHeight - window.innerHeight / animStart;
+			}
+
+			if ((pageYOffset > animItemOffset - animItemPoint) && pageYOffset < (animItemOffset + animItemHeight)) {
+				animItem.classList.add('_active');
+			} else {
+				if (!animItem.classList.contains('_anim-no-hide')) {
+					animItem.classList.remove('_active');
+				}
+			}
+		}
+	}
+	function offset(el) {
+		const rect = el.getBoundingClientRect(),
+			scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+			scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+		return { top: rect.top + scrollTop, left: rect.left + scrollLeft }
+	}
+
+	setTimeout(() => {
+		animOnScroll();
+	}, 300);
+}
+// === anim handler ===========================================
 
 $(document).ready(function() {
 	// === Burger Handler =====================================================================
@@ -472,11 +510,10 @@ function selects_update_all() {
 			let mySwiper;
 			mySwiper = new Swiper(slider.querySelector('.swiper-container'), {
 			slidesPerView:1,
-			loop: true,
 			speed: 600,
-			// autoplay: {
-			//   delay: 4000,
-			// },
+			autoplay: {
+			  delay: 8000,
+			},
 			spaceBetween: 35,
 			pagination: {
 			    el: slider.querySelector('.swiper-pagination'),
@@ -497,7 +534,6 @@ function selects_update_all() {
 	if(bgSlider) {
 		bgSliderData = new Swiper(bgSlider.querySelector('.swiper-container'), {
 		slidesPerView:1,
-		loop: true,
 		speed: 600,
 		effect: 'fade',
 		})
@@ -514,7 +550,7 @@ function selects_update_all() {
 			loop: true,
 			speed: 600,
 			// autoplay: {
-			//   delay: 3000,
+			//   delay: 8000,
 			// },
 			pagination: {
 			    el: slider.querySelector('.swiper-pagination'),
@@ -528,23 +564,26 @@ function selects_update_all() {
 			}  
 			});
 
-		slider.addEventListener('click', function(e) {
-			if(e.target.closest('.aside-slider__read-all')) {
-				let btn = e.target.closest('.aside-slider__read-all')
-				let slide = btn.closest('.swiper-slide');
 
-				if(slide.classList.contains('is-open')) {
-					slide.style.maxHeight = '415px';
-					slide.classList.remove('is-open');
+		slider.querySelectorAll('.swiper-slide').forEach((item) => {
+			let height = item.getBoundingClientRect().height;
+			item.style.maxHeight = '415px';
+			slider.querySelector('.swiper-wrapper').style.height = 'auto';
+			let btn = item.querySelector('.aside-slider__read-all');
+			btn.addEventListener('click', function() {
+				if(item.classList.contains('is-open')) {
+					item.style.maxHeight = '415px';
+					item.classList.remove('is-open');
 					btn.innerText = "Read All";
 					slider.querySelector('.swiper-wrapper').style.height = 'auto';
 				} else {
-					slide.style.maxHeight = slide.scrollHeight + 'px';
-					slide.classList.add('is-open');
+					item.style.maxHeight = height + 'px';
+					item.classList.add('is-open');
 					slider.querySelector('.swiper-wrapper').style.height = 'auto';
 					btn.innerText = "Close";
 				}
-			}
+			})
+
 		})		
 	}
 }
@@ -777,6 +816,9 @@ window.addEventListener('scroll', function() {
 	}
 }
 // === // footer text handler ==================================================================
+
+
+
 
 
 });;

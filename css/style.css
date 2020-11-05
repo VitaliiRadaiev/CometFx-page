@@ -697,6 +697,86 @@ img {
   padding-top: 92px;
 }
 
+._anim-items._fadeUp-mini {
+  -webkit-transition: all .8s ease;
+  -o-transition: all .8s ease;
+  transition: all .8s ease;
+  -webkit-transform: translate(0, 20%);
+      -ms-transform: translate(0, 20%);
+          transform: translate(0, 20%);
+  opacity: 0;
+}
+
+._anim-items._fadeUp-mini._active {
+  -webkit-transition: all .8s ease;
+  -o-transition: all .8s ease;
+  transition: all .8s ease;
+  -webkit-transform: translate(0, 0);
+      -ms-transform: translate(0, 0);
+          transform: translate(0, 0);
+  opacity: 1;
+}
+
+._anim-items._fadeUp {
+  -webkit-transition: all .8s ease;
+  -o-transition: all .8s ease;
+  transition: all .8s ease;
+  -webkit-transform: translate(0, 120%);
+      -ms-transform: translate(0, 120%);
+          transform: translate(0, 120%);
+  opacity: 0;
+}
+
+._anim-items._fadeUp._active {
+  -webkit-transition: all .8s ease;
+  -o-transition: all .8s ease;
+  transition: all .8s ease;
+  -webkit-transform: translate(0, 0);
+      -ms-transform: translate(0, 0);
+          transform: translate(0, 0);
+  opacity: 1;
+}
+
+._anim-items._fadeRight {
+  -webkit-transition: all .8s ease;
+  -o-transition: all .8s ease;
+  transition: all .8s ease;
+  -webkit-transform: translate(-120%, 0);
+      -ms-transform: translate(-120%, 0);
+          transform: translate(-120%, 0);
+  opacity: 0;
+}
+
+._anim-items._fadeRight._active {
+  -webkit-transition: all .8s ease;
+  -o-transition: all .8s ease;
+  transition: all .8s ease;
+  -webkit-transform: translate(0, 0);
+      -ms-transform: translate(0, 0);
+          transform: translate(0, 0);
+  opacity: 1;
+}
+
+._anim-items._fadeLeft {
+  -webkit-transition: all .8s ease;
+  -o-transition: all .8s ease;
+  transition: all .8s ease;
+  -webkit-transform: translate(120%, 0);
+      -ms-transform: translate(120%, 0);
+          transform: translate(120%, 0);
+  opacity: 0;
+}
+
+._anim-items._fadeLeft._active {
+  -webkit-transition: all .8s ease;
+  -o-transition: all .8s ease;
+  transition: all .8s ease;
+  -webkit-transform: translate(0, 0);
+      -ms-transform: translate(0, 0);
+          transform: translate(0, 0);
+  opacity: 1;
+}
+
 .aside {
   min-width: 0;
   width: 285px;
@@ -780,7 +860,7 @@ img {
 .main {
   overflow: hidden;
   position: relative;
-  margin-left: 285px;
+  margin-left: 284px;
 }
 
 .main__slider {
@@ -794,6 +874,15 @@ img {
       -ms-flex-direction: column;
           flex-direction: column;
   position: relative;
+}
+
+.main__slider-bg {
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
 }
 
 .main__slider .main-slider {
@@ -878,6 +967,7 @@ img {
   -webkit-transition: all .2s ease;
   -o-transition: all .2s ease;
   transition: all .2s ease;
+  overflow: hidden;
 }
 
 .btn-default > span {
@@ -888,15 +978,18 @@ img {
 .btn-default:after {
   position: absolute;
   content: '';
-  left: 0;
-  bottom: 0;
-  width: 100%;
+  left: 50%;
+  bottom: -1px;
+  width: 105%;
   height: 0.21em;
   -webkit-transition: all .2s ease;
   -o-transition: all .2s ease;
   transition: all .2s ease;
   background: #E3B04B;
   z-index: 1;
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
 }
 
 .link {
@@ -2462,6 +2555,8 @@ textarea.input {
   -webkit-transition: opacity .2s ease;
   -o-transition: opacity .2s ease;
   transition: opacity .2s ease;
+  text-align: center;
+  padding-top: 3.2rem;
 }
 
 .aside__body-slider.active {
@@ -2490,11 +2585,14 @@ textarea.input {
   margin-top: 3.2rem;
 }
 
+.aside__btn .btn-default {
+  text-transform: none;
+}
+
 .aside-slider .swiper-slide {
   text-align: center;
-  padding: 3.2rem 2rem 4.5rem;
+  padding: 2.2rem 2rem 4.5rem;
   overflow: hidden;
-  max-height: 415px;
   position: relative;
   -webkit-transition: all .4s ease;
   -o-transition: all .4s ease;
@@ -2775,6 +2873,7 @@ textarea.input {
   font-size: 2rem;
   line-height: 1.3em;
   height: 30px;
+  white-space: nowrap;
 }
 
 .price-card__list > li {
@@ -3526,10 +3625,11 @@ textarea.input {
 
   .btn-default:hover {
     color: #101010;
+    border-color: transparent;
   }
 
   .btn-default:hover:after {
-    height: 100%;
+    height: 105%;
     opacity: 0.8;
   }
 
