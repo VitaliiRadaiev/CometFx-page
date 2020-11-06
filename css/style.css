@@ -2389,12 +2389,7 @@ textarea.input {
   overflow: hidden;
   width: 100%;
   max-width: 229px;
-  height: 35px;
-}
-
-.header__logo > a {
-  position: relative;
-  display: block;
+  height: 45px;
 }
 
 .header__logo lottie-playe {
@@ -2689,6 +2684,10 @@ textarea.input {
           transform: translateX(-50%);
 }
 
+.aside__body {
+  padding-top: 1px;
+}
+
 .aside__body-slider {
   overflow: hidden;
   height: 0;
@@ -2698,7 +2697,7 @@ textarea.input {
   -o-transition: opacity .2s ease;
   transition: opacity .2s ease;
   text-align: center;
-  padding-top: 3.2rem;
+  margin-top: 32px;
 }
 
 .aside__body-slider.active {
