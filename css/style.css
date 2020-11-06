@@ -2697,7 +2697,7 @@ textarea.input {
   -o-transition: opacity .2s ease;
   transition: opacity .2s ease;
   text-align: center;
-  margin-top: 90px;
+  margin-top: 32px;
 }
 
 .aside__body-slider.active {
