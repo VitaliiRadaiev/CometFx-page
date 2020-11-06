@@ -596,7 +596,7 @@ function selects_update_all() {
 
 
 		slider.querySelectorAll('.swiper-slide').forEach((item) => {
-			let height = item.getBoundingClientRect().height;
+			let height = item.clientHeight;
 			item.style.maxHeight = '415px';
 			slider.querySelector('.swiper-wrapper').style.height = 'auto';
 			let btn = item.querySelector('.aside-slider__read-all');
