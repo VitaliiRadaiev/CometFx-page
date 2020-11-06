@@ -615,11 +615,12 @@ function selects_update_all() {
 							item.classList.add('is-open');
 							slider.querySelector('.swiper-wrapper').style.height = 'auto';
 							btn.innerText = "Close";
+						} else {
+							item.style.maxHeight = height + 'px';
+							item.classList.add('is-open');
+							slider.querySelector('.swiper-wrapper').style.height = 'auto';
+							btn.innerText = "Close";
 						}
-						item.style.maxHeight = height + 'px';
-						item.classList.add('is-open');
-						slider.querySelector('.swiper-wrapper').style.height = 'auto';
-						btn.innerText = "Close";
 					}
 				})
 
