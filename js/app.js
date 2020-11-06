@@ -281,6 +281,8 @@ if (animItems.length > 0) {
 // === anim handler ===========================================
 
 $(document).ready(function() {
+	document.body.classList.add('is-load');
+
 	// === Burger Handler =====================================================================
 	function burgerBtnAnimation(e) {
 		$('.burger span:nth-child(1)').toggleClass('first');
@@ -502,6 +504,7 @@ function selects_update_all() {
 		}
 	}
 };
+
 // ==  slider ==========================================================================
 {
 	let slider = document.querySelector('.main-slider');
@@ -539,7 +542,34 @@ function selects_update_all() {
 		})
 	}
 }
+{
+	let bgSlider = document.querySelector('.bg-slider-v2');
+	if(bgSlider) {
+		 $('.bg-slider-v2').slick({
+		  slidesToShow: 1,
+		  slidesToScroll: 1,
+		  infinite: false,
+		  arrows: false,
+		  fade: true,
+		  asNavFor: '.main-slider-v2'
+		});
+		$('.main-slider-v2').slick({
+		  slidesToShow: 1,
+		  slidesToScroll: 1,
+		  asNavFor: '.bg-slider-v2',
+		  dots: true,
+		   arrows: false,
+		   touchThreshold: 10,
+		   infinite: false,
+		   autoplay: true,
+		   autoplaySpeed: 8000,
+
+		});
+	}
+}
+
 // == and  slider ========================================================================== ;
+
 // ==  slider ==========================================================================
 {
 	let slider = document.querySelector('.aside-slider');
@@ -588,6 +618,7 @@ function selects_update_all() {
 	}
 }
 // == and  slider ==========================================================================;
+
 {
 	const slider = document.querySelector('.block-cards.swiper-container');
 	let mySwiper;
@@ -628,6 +659,7 @@ function selects_update_all() {
 	}
 
 };
+
 // === aside handler ==================================================================
 // document.body.addEventListener('click', (e) => {
 // 	console.log(e.target)
@@ -767,19 +799,17 @@ function runSpoller() {
 	}
 	
 }
-
 runSpoller();
 // === // mobile menu handler ==================================================================
 
-
 // === if there are cards ==================================================================
-let blockCards = document.querySelector('.block-cards');
- if(blockCards) {
- 	let mainSlider = document.querySelector('.main-slider .swiper-container');
- 	mainSlider.classList.add('_margin-bottom');
- }
-// === // if there are cards ==================================================================
-
+// let blockCards = document.querySelector('.block-cards');
+//  if(blockCards) {
+//  	let mainSlider = document.querySelector('.main-slider .swiper-container');
+//  	mainSlider.classList.add('_margin-bottom');
+//  }
+// // === // if there are cards ==================================================================
+// console.log('test4')
 
 // === add background mobile head ==================================================================
 window.addEventListener('scroll', function() {
@@ -791,7 +821,6 @@ window.addEventListener('scroll', function() {
 	}
 })
 // === // add background mobile head ==================================================================
-
 
 // === footer text handler ==================================================================
 {
