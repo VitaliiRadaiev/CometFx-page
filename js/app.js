@@ -856,6 +856,37 @@ window.addEventListener('scroll', function() {
 }
 // === // footer text handler ==================================================================
 
+// lottie.loadAnimation({
+//   container: element, // the dom element that will contain the animation
+//   renderer: 'svg',
+//   loop: true,
+//   autoplay: true,
+//   path: 'data.json' // the path to the animation json
+// });
 
+{
+	let logo = document.querySelector('.header__logo a');
+	if(logo) {
+		lottie.loadAnimation({
+		  container: logo, // the dom element that will contain the animation
+		  renderer: 'svg',
+		  loop: true,
+		  autoplay: true,
+		  path: '../img/CometFX Logo 02_11_2020.json' // the path to the animation json
+		});
+	}
+
+	let mobileLogo = document.querySelector('.head-mobile__logo a');
+	if(mobileLogo) {
+		lottie.loadAnimation({
+		  container: mobileLogo, // the dom element that will contain the animation
+		  renderer: 'svg',
+		  loop: true,
+		  autoplay: true,
+		  path: '../img/CometFX Logo 02_11_2020.json' // the path to the animation json
+		});
+	}
+}
+console.log(lottie)
 
 });;
