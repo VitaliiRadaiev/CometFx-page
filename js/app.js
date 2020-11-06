@@ -601,7 +601,7 @@ function selects_update_all() {
 				slider.querySelector('.swiper-wrapper').style.height = 'auto';
 				let btn = item.querySelector('.aside-slider__read-all');
 				btn.addEventListener('click', function() {
-					if(item.classList.contains('is-open')) {
+					if(item.classList.contains('is-open')) { 
 						item.style.maxHeight = '415px';
 						item.classList.remove('is-open');
 						btn.innerText = "Read All";
@@ -611,12 +611,12 @@ function selects_update_all() {
 							let height2 = item.clientHeight;
 							console.log(height);
 							console.log(height2);
-							item.style.maxHeight = height2 + 'px';
+							item.style.maxHeight = (height2 + 40) + 'px';
 							item.classList.add('is-open');
 							slider.querySelector('.swiper-wrapper').style.height = 'auto';
 							btn.innerText = "Close";
 						} else {
-							item.style.maxHeight = height + 'px';
+							item.style.maxHeight = (height + 40) + 'px';
 							item.classList.add('is-open');
 							slider.querySelector('.swiper-wrapper').style.height = 'auto';
 							btn.innerText = "Close";
