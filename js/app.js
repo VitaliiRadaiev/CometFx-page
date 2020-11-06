@@ -595,7 +595,6 @@ function selects_update_all() {
 			});
 
 
-		setTimeout(() => {
 			slider.querySelectorAll('.swiper-slide').forEach((item) => {
 				let height = item.clientHeight;
 				item.style.maxHeight = '415px';
@@ -608,6 +607,15 @@ function selects_update_all() {
 						btn.innerText = "Read All";
 						slider.querySelector('.swiper-wrapper').style.height = 'auto';
 					} else {
+						if(height < 415) {
+							let height2 = item.clientHeight;
+							console.log(height);
+							console.log(height2);
+							item.style.maxHeight = height2 + 'px';
+							item.classList.add('is-open');
+							slider.querySelector('.swiper-wrapper').style.height = 'auto';
+							btn.innerText = "Close";
+						}
 						item.style.maxHeight = height + 'px';
 						item.classList.add('is-open');
 						slider.querySelector('.swiper-wrapper').style.height = 'auto';
@@ -616,7 +624,6 @@ function selects_update_all() {
 				})
 
 			})	
-		},100)	
 	}
 }
 // == and  slider ==========================================================================;
