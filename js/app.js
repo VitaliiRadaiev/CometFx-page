@@ -872,7 +872,7 @@ window.addEventListener('scroll', function() {
 		  renderer: 'svg',
 		  loop: true,
 		  autoplay: true,
-		  path: '../img/CometFX-Logo.json' // the path to the animation json
+		  path: 'https://github.com/VitaliiRadaiev/CometFx-page/tree/master/img/CometFX-Logo.json' // the path to the animation json
 		});
 	}
 
@@ -883,7 +883,7 @@ window.addEventListener('scroll', function() {
 		  renderer: 'svg',
 		  loop: true,
 		  autoplay: true,
-		  path: '../img/CometFX-Logo.json' // the path to the animation json
+		  path: 'https://github.com/VitaliiRadaiev/CometFx-page/tree/master/img/CometFX-Logo.json' // the path to the animation json
 		});
 	}
 }
