@@ -872,7 +872,7 @@ window.addEventListener('scroll', function() {
 		  renderer: 'svg',
 		  loop: true,
 		  autoplay: true,
-		  path: '../img/CometFX Logo 02_11_2020.json' // the path to the animation json
+		  path: '../img/CometFX-Logo.json' // the path to the animation json
 		});
 	}
 
@@ -883,7 +883,7 @@ window.addEventListener('scroll', function() {
 		  renderer: 'svg',
 		  loop: true,
 		  autoplay: true,
-		  path: '../img/CometFX Logo 02_11_2020.json' // the path to the animation json
+		  path: '../img/CometFX-Logo.json' // the path to the animation json
 		});
 	}
 }
