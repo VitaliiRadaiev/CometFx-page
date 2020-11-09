@@ -929,7 +929,16 @@ if(menuTable) {
 			document.getElementById(id).classList.add('active');
 		});
 	});
-}
-// == and platform tabs handler ==========================
 
+	if(isMobile.any()) {
+		$("div#scroll").addClass('_mobile');
+	} else {
+		$("div#scroll").smoothDivScroll({
+			touchScrolling:true, 
+			hotSpotScrolling: false,
+		});		
+	}
+
+}
+// == and platform tabs handler =========================
 });;
