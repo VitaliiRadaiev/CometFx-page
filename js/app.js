@@ -968,4 +968,28 @@ if(menuTable) {
 	}
 }
 // == and ruls-list handler =========================
+
+
+// == block-column-2 handler =========================
+{
+	let block = document.querySelector('.block-column-2');
+	if(block) {
+		let arr = [...block.children];
+		let count = Math.ceil(block.children.length / 2);
+		for(let i = 0; i < 2; i++) {
+			let column = document.createElement('div');
+			column.className = 'column';
+
+			for(let j = 0; j < count; j++) {
+				if(arr[j]) {
+
+					column.append(arr[j]);
+				}
+			}
+			arr = arr.slice(count)
+			block.append(column);
+		}
+	}
+}
+// == and block-column-2 handler =========================
 });;

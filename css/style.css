@@ -1317,7 +1317,7 @@ table td:last-child {
 
 .list-column-1 {
   font-size: 10px;
-  margin: 0 -1em;
+  padding-left: 0 !important;
 }
 
 .list-column-1 > li {
@@ -1350,6 +1350,7 @@ table td:last-child {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   font-size: 10px;
+  padding-left: 0 !important;
 }
 
 .list-column-2 > li {
@@ -1389,7 +1390,8 @@ table td:last-child {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   font-size: 10px;
-  margin: 0 -1.5em;
+  margin: 0 -1.5em !important;
+  padding-left: 0 !important;
 }
 
 .list-column-3.center {
@@ -1421,7 +1423,8 @@ table td:last-child {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   font-size: 10px;
-  margin: 0 -1em;
+  margin: 0 -1em !important;
+  padding-left: 0 !important;
 }
 
 .list-column-4 > li {
@@ -3842,6 +3845,14 @@ textarea.input {
   text-transform: uppercase;
 }
 
+.product__content .container ul {
+  padding-left: 0;
+}
+
+.product__content .container ul > li {
+  font-size: 1em !important;
+}
+
 .platform .container {
   padding-left: 30px;
   padding-right: 30px;
@@ -4483,6 +4494,10 @@ textarea.input {
           transform: translate(0, 0);
 }
 
+.insights_risk-management .list-column-3 .icon {
+  height: 7.3em;
+}
+
 .info-block {
   font-size: 10px;
   margin: 4em 0 !important;
@@ -4672,6 +4687,60 @@ textarea.input {
 
 .rulls__icon img {
   width: 100%;
+}
+
+.block-column-2 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 10px;
+  margin: 4em 0 2.5em;
+}
+
+.block-column-2 .column {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 50%;
+          flex: 0 1 50%;
+}
+
+.block-column-2 .column:nth-child(2) {
+  padding-left: 5em;
+}
+
+.block-column-2 .item {
+  margin-bottom: 1.8em;
+}
+
+.block-column-2 .item .icon {
+  height: 8.5em;
+}
+
+.block-column-2 .item .icon img {
+  height: 100%;
+}
+
+.block-column-2 .item .text {
+  max-width: 369px;
+}
+
+.block-column-2 .item .text p {
+  color: #F8F8F8;
+  font-family: "RobotoSlab", sans-serif;
+  font-weight: 300;
+  font-size: 1.5em;
+  line-height: 1.3433em;
+  margin-bottom: 0.666em;
+  min-height: 1em;
+}
+
+.block-column-2 .item .text p > strong {
+  font-weight: 700;
+  color: #E3B04B;
+}
+
+.block-column-2 .item .text p > b {
+  font-weight: 700;
+  color: #F8F8F8;
 }
 
 .footer {
@@ -5871,6 +5940,18 @@ textarea.input {
             transform: translateY(-20%);
   }
 
+  .insights_risk-management .list-column-3 {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+
+  .insights_risk-management .list-column-3 > li {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 50%;
+            flex: 0 0 50%;
+  }
+
   .rulls__list > li {
     border-top: none !important;
     border-right: none !important;
@@ -5916,6 +5997,10 @@ textarea.input {
     height: 50%;
     z-index: 1;
     border-right: 1px dashed #E3B04B;
+  }
+
+  .block-column-2 .column:nth-child(2) {
+    padding-left: 3em;
   }
 
   .footer__top {
@@ -6013,6 +6098,10 @@ textarea.input {
   }
 
   .rulls {
+    font-size: 7px;
+  }
+
+  .block-column-2 {
     font-size: 7px;
   }
 }
