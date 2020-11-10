@@ -345,6 +345,7 @@ $('img.img-svg').each(function(){
 });
 // === // Конвертация svg картинки в svg код ==================================================================
 
+
 //Select
 let selects = document.getElementsByTagName('select');
 if (selects.length > 0) {
@@ -955,4 +956,16 @@ if(menuTable) {
 
 }
 // == and platform tabs handler =========================
+
+
+// == ruls-list handler =========================
+{
+	let rulsBlock = document.querySelector('.rulls__list');
+	if (rulsBlock) {
+		if(rulsBlock.children.length % 2 != 0) {
+			rulsBlock.classList.add('_is-odd-childern');
+		}
+	}
+}
+// == and ruls-list handler =========================
 });;
