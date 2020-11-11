@@ -1086,12 +1086,29 @@ div.scrollableArea {
   font-weight: 300;
 }
 
+.text-content h2 > strong {
+  font-weight: 500;
+  color: #E3B04B;
+}
+
 .text-content h3 {
   font-weight: 300;
   font-size: 2.9em;
   line-height: 1.17em;
   color: #F8F8F8;
   margin-bottom: 0.5433em;
+}
+
+.text-content h4 {
+  font-size: 2em;
+  line-height: 1.15em;
+  color: #E3B04B;
+  margin-bottom: 0.5433em;
+  font-weight: 400;
+}
+
+.text-content h4 > span {
+  font-weight: 300;
 }
 
 .text-content h5 {
@@ -4743,6 +4760,44 @@ textarea.input {
   color: #F8F8F8;
 }
 
+.about-us_partnership .block-text-img {
+  margin-bottom: 5em;
+}
+
+.about-us_partnership .block-text-img .block-text-img__text {
+  width: 56%;
+}
+
+.about-us_partnership .block-text-img .block-text-img__img {
+  width: 40%;
+}
+
+.about-us_partnership .list-column-2 {
+  margin: 0 !important;
+}
+
+.about-us_partnership .list-column-2 > li {
+  display: block;
+}
+
+.about-us_partnership .list-column-2 > li .icon {
+  margin-bottom: 0.5em;
+}
+
+.about-us__content {
+  margin: 130px 0 90px;
+}
+
+.about-us__content h2 {
+  text-transform: uppercase;
+}
+
+.about-us__content .list-column-2 > li {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 .footer {
   padding: 35px 0 30px;
   margin-left: 285px;
@@ -5558,6 +5613,10 @@ textarea.input {
     margin: 174px 0 90px;
   }
 
+  .about-us__content {
+    margin: 160px 0 90px;
+  }
+
   .footer {
     margin-left: 0;
     padding: 39px 0 30px;
@@ -5688,6 +5747,10 @@ textarea.input {
 }
 
 @media (max-width: 767.98px) {
+  .mobile-center {
+    text-align: center;
+  }
+
   .title-1 {
     font-size: 3.2rem;
   }
@@ -6001,6 +6064,10 @@ textarea.input {
 
   .block-column-2 .column:nth-child(2) {
     padding-left: 3em;
+  }
+
+  .about-us__content {
+    margin: 130px 0 90px;
   }
 
   .footer__top {
