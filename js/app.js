@@ -598,12 +598,12 @@ function selects_update_all() {
 
 			slider.querySelectorAll('.swiper-slide').forEach((item) => {
 				let height = item.clientHeight;
-				item.style.maxHeight = '415px';
+				item.style.maxHeight = '350px';
 				slider.querySelector('.swiper-wrapper').style.height = 'auto';
 				let btn = item.querySelector('.aside-slider__read-all');
 				btn.addEventListener('click', function() {
 					if(item.classList.contains('is-open')) { 
-						item.style.maxHeight = '415px';
+						item.style.maxHeight = '350px';
 						item.classList.remove('is-open');
 						btn.innerText = "Read All";
 						slider.querySelector('.swiper-wrapper').style.height = 'auto';

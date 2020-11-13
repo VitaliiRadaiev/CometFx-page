@@ -846,7 +846,7 @@ div.scrollableArea {
   /* ширина для вертикального скролла */
   height: 4px;
   /* высота для горизонтального скролла */
-  background-color: #143861;
+  background-color: #333333;
 }
 
 .aside__inner::-webkit-scrollbar-thumb {
@@ -861,11 +861,13 @@ div.scrollableArea {
 .aside__inner::-webkit-scrollbar-button:vertical:start:decrement {
   background: linear-gradient(120deg, #02141a 40%, rgba(0, 0, 0, 0) 41%), linear-gradient(240deg, #02141a 40%, rgba(0, 0, 0, 0) 41%), linear-gradient(0deg, #02141a 30%, rgba(0, 0, 0, 0) 31%);
   background-color: #f6f8f4;
+  display: none;
 }
 
 .aside__inner::-webkit-scrollbar-button:vertical:end:increment {
   background: linear-gradient(300deg, #02141a 40%, rgba(0, 0, 0, 0) 41%), linear-gradient(60deg, #02141a 40%, rgba(0, 0, 0, 0) 41%), linear-gradient(180deg, #02141a 30%, rgba(0, 0, 0, 0) 31%);
   background-color: #f6f8f4;
+  display: none;
 }
 
 .aside__inner::-webkit-scrollbar-button:horizontal:start:decrement {
@@ -1266,6 +1268,7 @@ button.btn-default:active {
       -ms-flex-align: center;
           align-items: center;
   position: relative;
+  margin-bottom: 4.1em;
 }
 
 .block-text-img__text {
@@ -3234,8 +3237,7 @@ textarea.input {
   height: auto;
   visibility: visible;
   opacity: 1;
-  padding: 2.5rem;
-  margin-top: 3.2rem;
+  padding: 0rem 2.5rem 2.5rem;
 }
 
 .aside__btn .btn-default {
@@ -3900,6 +3902,23 @@ textarea.input {
   font-size: 1em !important;
 }
 
+.product_forex .product__content p ~ h2 {
+  margin-top: 2.7em;
+}
+
+.product_forex .product__content .container ul > li {
+  margin-bottom: 0em;
+}
+
+.product_spot-metals .product__content p ~ h2 {
+  margin-top: 1.5em;
+}
+
+.product_indices .product__content p ~ h2 {
+  margin-top: 2.5em;
+  text-align: center;
+}
+
 .platform .container {
   padding-left: 30px;
   padding-right: 30px;
@@ -4114,7 +4133,6 @@ textarea.input {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  font-weight: "RobotoSlab", sans-serif;
   font-size: 10px;
   border: 1px solid #fff;
   border-radius: 0.7em;
@@ -4149,7 +4167,6 @@ textarea.input {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  font-weight: "RobotoSlab", sans-serif;
   font-size: 10px;
   border: 1px solid #fff;
   border-radius: 0.4em;
@@ -4188,6 +4205,18 @@ textarea.input {
 
 .analytics .block-text-img .block-text-img__text {
   width: 74%;
+}
+
+.analytics_fundamental .block-text-img {
+  margin-bottom: 0;
+}
+
+.analytics_technical .block-text-img {
+  margin-bottom: 0;
+}
+
+.analytics_economic .block-text-img {
+  margin-bottom: 1em;
 }
 
 .analytics_economic .list-column-3 .icon {
@@ -4396,6 +4425,22 @@ textarea.input {
 .mews-detail .container {
   padding-left: 30px;
   padding-right: 30px;
+}
+
+.mews-detail .container h3 {
+  margin-top: 1.7em;
+}
+
+.mews-detail .container > p ~ h5 {
+  margin-top: 3.2em;
+}
+
+.mews-detail .container .social {
+  margin-top: 8em;
+}
+
+.mews-detail .container > ul > li:before {
+  content: '•';
 }
 
 .mews-detail__come-back {
@@ -4630,6 +4675,31 @@ textarea.input {
   line-height: 1.3433em;
   margin-bottom: 0.666em;
   min-height: 1em;
+}
+
+.info-block__content ul > li:before {
+  content: '•';
+}
+
+.info-block__content ol {
+  list-style: none;
+  margin: 1.8em 0;
+}
+
+.info-block__content ol > li {
+  margin-bottom: 1em;
+  color: #F8F8F8;
+  font-family: "RobotoSlab", sans-serif;
+  font-weight: 300;
+  font-size: 1.5em;
+  line-height: 1.3433em;
+  margin-bottom: 0.666em;
+  min-height: 1em;
+}
+
+.info-block__content ol > li > strong {
+  font-weight: 700;
+  color: #E3B04B;
 }
 
 .rulls {
@@ -6204,6 +6274,10 @@ textarea.input {
     width: 100%;
   }
 
+  .mews-detail .container {
+    margin-top: 5em;
+  }
+
   .insights__content {
     margin: 165px 0 70px;
   }
@@ -6360,7 +6434,9 @@ textarea.input {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    alignt-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
   }
 
   .product .container {
