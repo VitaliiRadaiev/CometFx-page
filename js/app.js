@@ -608,7 +608,7 @@ function selects_update_all() {
 						btn.innerText = "Read All";
 						slider.querySelector('.swiper-wrapper').style.height = 'auto';
 					} else {
-						if(height < 415) {
+						if(height < 350) {
 							let height2 = item.clientHeight;
 							console.log(height);
 							console.log(height2);
