@@ -3087,6 +3087,45 @@ textarea.input {
 
 .bg-slider-v2__item {
   min-height: calc(100vh - 9.3rem);
+  position: relative;
+}
+
+.bg-slider-v2__item:before {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#000000+0,000000+48,000000+48,000000+100&1+0,0.4+48,0.4+48,1+100 */
+  /* FF3.6-15 */
+  /* Chrome10-25,Safari5.1-6 */
+  background: -webkit-gradient(linear, left top, right top, from(black), color-stop(48%, rgba(0, 0, 0, 0.4)), to(black));
+  background: -o-linear-gradient(left, black 0%, rgba(0, 0, 0, 0.4) 48%, black 100%);
+  background: linear-gradient(to right, black 0%, rgba(0, 0, 0, 0.4) 48%, black 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#000000',GradientType=1 );
+  /* IE6-9 */
+}
+
+.bg-slider-v2__item:after {
+  position: absolute;
+  content: '';
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 160px;
+  z-index: 3;
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#000000+0,000000+100&0+0,1+100 */
+  /* FF3.6-15 */
+  /* Chrome10-25,Safari5.1-6 */
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0)), to(black));
+  background: -o-linear-gradient(top, rgba(0, 0, 0, 0) 0%, black 100%);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, black 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#000000',GradientType=0 );
+  /* IE6-9 */
 }
 
 .main-slider-v2 {

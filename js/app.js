@@ -515,9 +515,9 @@ function selects_update_all() {
 			mySwiper = new Swiper(slider.querySelector('.swiper-container'), {
 			slidesPerView:1,
 			speed: 600,
-			autoplay: {
-			  delay: 8000,
-			},
+			// autoplay: {
+			//   delay: 8000,
+			// },
 			spaceBetween: 35,
 			pagination: {
 			    el: slider.querySelector('.swiper-pagination'),
