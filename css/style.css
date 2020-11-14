@@ -3968,6 +3968,10 @@ textarea.input {
   margin-bottom: 99px;
 }
 
+.tabs-block {
+  min-height: 320px;
+}
+
 .tabs-block__wrap {
   position: relative;
 }
@@ -4097,6 +4101,8 @@ textarea.input {
 .tabs-block__content {
   display: none;
   margin-top: 25px;
+  -webkit-animation: tabsFadeUp .8s ease;
+          animation: tabsFadeUp .8s ease;
 }
 
 .tabs-block__content#tab-3,
@@ -4136,6 +4142,34 @@ textarea.input {
 
 .tabs-block__btn-wrap {
   margin-top: 24px;
+}
+
+@-webkit-keyframes tabsFadeUp {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(50%);
+            transform: translateY(50%);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translateY(0%);
+            transform: translateY(0%);
+  }
+}
+
+@keyframes tabsFadeUp {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(50%);
+            transform: translateY(50%);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translateY(0%);
+            transform: translateY(0%);
+  }
 }
 
 .btn-windows {
@@ -4304,6 +4338,12 @@ textarea.input {
   padding: 15px 16px;
   background: #101010;
   border: 1px solid #E3B04B;
+}
+
+.card-news._fadeUp {
+  -webkit-transform: translate(0, 50%);
+      -ms-transform: translate(0, 50%);
+          transform: translate(0, 50%);
 }
 
 .card-news__date {
@@ -6073,6 +6113,11 @@ textarea.input {
     text-align: center;
   }
 
+  .aside__close {
+    margin-top: 0.7em;
+    margin-left: 0.8em;
+  }
+
   .title-1 {
     font-size: 3.2rem;
   }
@@ -6127,6 +6172,11 @@ textarea.input {
 
   .head-mobile {
     min-height: 8em;
+  }
+
+  .header__close {
+    margin-top: 0.7em;
+    margin-right: 1em;
   }
 
   .main-slider__subtitle {

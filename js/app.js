@@ -296,14 +296,6 @@ $(document).ready(function() {
 	$('.burger').click((e) => burgerBtnAnimation(e));
 // === Burger Handler =====================================================================	;
 
-
-	// $(".aside__inner").niceScroll({
-	// 	cursorcolor:"#E3B04B",
-	// 	cursorwidth:"5px",
-	// 	background:"rgba(20,20,20,0.3)",
-	// 	cursorborder:"1px solid transparent",
-	// });
-
 // === Проверка, поддержка браузером формата webp ==================================================================
 
 	function testWebP(callback) {
@@ -686,9 +678,6 @@ function cardNewsHandler(){
 cardNewsHandler();;
 
 // === aside handler ==================================================================
-// document.body.addEventListener('click', (e) => {
-// 	console.log(e.target)
-// })
 
 {
 	let aside = document.querySelector('.aside');
@@ -699,6 +688,7 @@ cardNewsHandler();;
 			btnOpen.addEventListener('click', function(e) {
 				if(e.target.closest('.head-mobile__btn-left')) {
 					aside.classList.add('open');
+					document.body.classList.add('lock');
 
 					if(document.documentElement.clientWidth < 768) {
 						let menu = document.querySelector('.header__body') 
@@ -712,6 +702,7 @@ cardNewsHandler();;
 			btnClose.addEventListener('click', function(e) {
 				if(e.target.closest('.aside__close')) {
 					aside.classList.remove('open');
+					document.body.classList.remove('lock');
 				}
 			})
 		}
@@ -779,6 +770,7 @@ function runSpoller() {
 		if(burger) {
 			burger.addEventListener('click', function() {
 				menu.classList.add('open');
+				document.body.classList.add('lock');
 				if(document.documentElement.clientWidth < 768) {
 					let aside = document.querySelector('.aside');
 					aside.classList.remove('open');
@@ -790,6 +782,7 @@ function runSpoller() {
 		if(btnClose) {
 			btnClose.addEventListener('click', function() {
 				menu.classList.remove('open');
+				document.body.classList.remove('lock');
 			})
 		}
 	}
