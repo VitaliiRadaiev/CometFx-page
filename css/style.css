@@ -3344,16 +3344,16 @@ textarea.input {
 .aside-slider__title {
   font-family: "RobotoSlab", sans-serif;
   font-weight: 300;
-  font-size: 2rem;
+  font-size: 1.8rem;
   line-height: 1.3em;
-  margin-bottom: 1.8rem;
+  margin-bottom: 1.6rem;
 }
 
 .aside-slider__text {
   font-family: "RobotoSlab", sans-serif;
   font-weight: 300;
-  font-size: 1.6rem;
-  line-height: 1.32em;
+  font-size: 1.4rem;
+  line-height: 1.52em;
   padding: 0 1.5rem;
   margin: 1px 0;
 }
@@ -3572,6 +3572,10 @@ textarea.input {
 
 .price-card__list > li {
   padding: 2.5rem 5.5rem;
+}
+
+.price-card__list > li:nth-child(2) {
+  min-height: 114px;
 }
 
 .price-card__list > li:not(:last-child) {
@@ -3947,6 +3951,11 @@ textarea.input {
 
 .product_forex .product__content .container ul > li {
   margin-bottom: 0em;
+}
+
+.product_forex .product__content .container > .block-text-img .block-text-img__img img {
+  width: 115%;
+  max-width: 115%;
 }
 
 .product_spot-metals .product__content p ~ h2 {
