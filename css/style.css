@@ -1517,15 +1517,36 @@ table td:last-child {
   margin-right: 3.333em;
 }
 
+.social__list > li:nth-child(2) span {
+  padding-top: 2px;
+}
+
 .social__list > li > a {
   font-size: 1em;
-  display: inline-block;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   width: 3.333em;
   height: 3.333em;
   border-radius: 50%;
   -webkit-transition: all .2s ease;
   -o-transition: all .2s ease;
   transition: all .2s ease;
+  border: 1px solid #E3B04B;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.social__list > li > a > span {
+  height: 1.8em;
+}
+
+.social__list > li > a > span img {
+  height: 100%;
 }
 
 .social__list > li > a img {
