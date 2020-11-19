@@ -3013,6 +3013,7 @@ textarea.input {
   padding: 8px 0;
   display: inline-block;
   white-space: nowrap;
+  text-transform: capitalize;
 }
 
 .home__cards {
