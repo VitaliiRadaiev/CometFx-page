@@ -3589,6 +3589,7 @@ textarea.input {
   line-height: 1.3em;
   height: 30px;
   white-space: nowrap;
+  text-transform: capitalize;
 }
 
 .price-card__list > li {
