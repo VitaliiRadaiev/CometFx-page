@@ -19,14 +19,14 @@
 		</button>
 		<div class="head-mobile__logo">
 			<a href="#">
-				
+
 			</a>
 		</div>
 		<button class="head-mobile__btn-right">
 			<span>
 			</span>
 		</button>
-	</div>	
+	</div>
 
 	<div class="header__body">
 		<button class="header__close">
@@ -35,7 +35,7 @@
 
 		<div class="header__logo logo">
 			<a href="#">
-				
+
 			</a>
 		</div>
 		<nav class="header__menu menu">
@@ -123,8 +123,8 @@
 		</nav>
 		<form action="/" class="header__language language">
 			<select name="language" id="language" class="language__select">
-				<option  value="En" selected>English</option>
-				<option  value="Tr">Turkish</option>
+				<option value="En" selected>English</option>
+				<option value="Tr">Turkish</option>
 			</select>
 		</form>
 	</div>
@@ -271,12 +271,21 @@
 								</li>								
 							</ul>
 
-							<div class="iframe-container">
-								
-								<iframe src="https://sslecal2.forexprostools.com?ecoDayBackground=%23000000&defaultFont=%23ffffff&innerBorderColor=%23e3b04b&borderColor=%23f2d7ac&columns=exc_flags,exc_currency,exc_importance,exc_actual,exc_forecast,exc_previous&features=datepicker,timezone&countries=25,32,6,37,72,22,17,39,14,10,35,43,56,36,110,11,26,12,4,5&calType=week&timeZone=63&lang=1" width="650" height="467" frameborder="0" allowtransparency="true" marginwidth="0" marginheight="0"></iframe>
-								<div class="poweredBy" style="font-family: Arial, Helvetica, sans-serif;"><span style="font-size: 16px;color: #fff;text-decoration: none;">Real Time Economic Calendar provided by <a href="https://www.investing.com/" rel="nofollow" target="_blank" style="font-size: 16px;color: #06529D; font-weight: bold;" class="underline_link">Investing.com</a>.</span></div>  
-								
+							<!-- TradingView Widget BEGIN -->
+							<div class="tradingview-widget-container">
+								<div class="tradingview-widget-container__widget"></div>
+								<script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-events.js" async>
+								{
+								"colorTheme": "dark",
+								"isTransparent": false,
+								"width": "100%",
+								"height": "100%",
+								"locale": "uk",
+								"importanceFilter": "-1,0,1"
+							}
+								</script>
 							</div>
+							<!-- TradingView Widget END -->
 						</div>
 					</section>
 					<section class="home__steps steps-block">
