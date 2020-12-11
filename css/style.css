@@ -695,7 +695,7 @@ img {
 }
 
 .tradingview-widget-container {
-  height: 700px;
+  height: 700px !important;
 }
 
 div.scrollWrapper {
@@ -6177,7 +6177,7 @@ textarea.input {
 
 @media (max-width: 767.98px) {
   .tradingview-widget-container {
-    height: 500px;
+    height: 500px !important;
   }
 
   .mobile-center {
