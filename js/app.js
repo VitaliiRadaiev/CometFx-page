@@ -389,7 +389,6 @@ function select_item(select) {
 	const select_selected_option = select.querySelector('option:checked');
 	const select_selected_text = select_selected_option.text;
 	const select_type = select.getAttribute('data-type');
-	console.log(select_selected_option.value)
 
 	if (select_items) {
 		select_items.remove();
@@ -496,6 +495,54 @@ function selects_update_all() {
 			select_item(select);
 		}
 	}
+}
+
+
+
+
+
+{
+	let language = document.querySelector('.language');
+	if(language) {
+		let list = document.querySelector('.language__list')
+		language.addEventListener('click', (e) => {
+			language.classList.toggle('_active');
+			_slideToggle(list)
+
+			if(e.target.closest('.language__item')) {
+				e.target.classList.add('_active');
+				let title = document.querySelector('.language__title > span');
+				title.innerText = e.target.dataset.value;
+				
+				for(let el of list.children) {
+					console.log(el);
+					console.log(e.target);
+					
+					
+					if(el == e.target) {
+						continue
+					}
+					el.classList.remove('_active');
+				}
+				//selectLang()
+			}
+		})
+
+		function selectLang() {
+			let item = list.querySelector('.language__item._active');
+			let title = document.querySelector('.language__title > span');
+			title.innerText = item.dataset.value;
+
+			for(let el of list.children) {
+				if(el = item) {
+					continue
+				}
+				el.classList.remove('_active');
+			}
+
+		}
+		selectLang();
+	}
 };
 
 	// ==  slider ==========================================================================
@@ -590,29 +637,36 @@ function selects_update_all() {
 
 			slider.querySelectorAll('.swiper-slide').forEach((item) => {
 				let height = item.clientHeight;
+				let text = item.querySelector('.aside-slider__read-all').dataset.readall;
+				let text2 = item.querySelector('.aside-slider__read-all').dataset.close;
+				
+				
 				item.style.maxHeight = '350px';
 				slider.querySelector('.swiper-wrapper').style.height = 'auto';
 				let btn = item.querySelector('.aside-slider__read-all');
 				btn.addEventListener('click', function() {
 					if(item.classList.contains('is-open')) { 
+						
 						item.style.maxHeight = '350px';
 						item.classList.remove('is-open');
-						btn.innerText = "Read All";
+						btn.innerText = text;
 						slider.querySelector('.swiper-wrapper').style.height = 'auto';
 					} else {
 						if(height < 350) {
 							let height2 = item.clientHeight;
+							
 							console.log(height);
 							console.log(height2);
 							item.style.maxHeight = (height2 + 40) + 'px';
 							item.classList.add('is-open');
 							slider.querySelector('.swiper-wrapper').style.height = 'auto';
-							btn.innerText = "Close";
+							btn.innerText = text2;
 						} else {
+							
 							item.style.maxHeight = (height + 40) + 'px';
 							item.classList.add('is-open');
 							slider.querySelector('.swiper-wrapper').style.height = 'auto';
-							btn.innerText = "Close";
+							btn.innerText = text2;
 						}
 					}
 				})
@@ -731,6 +785,7 @@ cardNewsHandler();;
 
 	//Spollers
 	function runSpoller() {
+
 		let spollers = document.querySelectorAll("._spoller");
 		if (spollers.length > 0) {
 			for (let index = 0; index < spollers.length; index++) {
@@ -745,15 +800,21 @@ cardNewsHandler();;
 					}
 					if (spoller.closest('._spollers').classList.contains('_one')) {
 						let curent_spollers = spoller.closest('._spollers').querySelectorAll('._spoller');
+
+						
 						for (let i = 0; i < curent_spollers.length; i++) {
 							let el = curent_spollers[i];
+
+							
 							if (el != spoller) {
 								el.classList.remove('_active');
+								
 								_slideUp(el.nextElementSibling);
 							}
 						}
 					}
 					spoller.classList.toggle('_active');
+					
 					_slideToggle(spoller.nextElementSibling);
 				});
 			}
@@ -845,17 +906,21 @@ cardNewsHandler();;
 		let statement = document.querySelector('.statement__inner');
 		if (statement) {
 			let btn = statement.querySelector('.statement__btn-close');
+			let text = statement.querySelector('.statement__btn-close').dataset.readall;
+			let text2 = statement.querySelector('.statement__btn-close').dataset.close;
+			
+			
 			if (btn) {
 				btn.addEventListener('click', function () {
 
 					if (statement.classList.contains('is-open')) {
 						statement.style.maxHeight = '163px';
 						statement.classList.remove('is-open');
-						btn.innerText = "Read All";
+						btn.innerText = text;
 					} else {
 						statement.style.maxHeight = statement.scrollHeight + 'px';
 						statement.classList.add('is-open');
-						btn.innerText = "Close";
+						btn.innerText = text2;
 					}
 
 				})
@@ -872,7 +937,7 @@ cardNewsHandler();;
 				renderer: 'svg',
 				loop: true,
 				autoplay: true,
-				path: 'https://vitaliiradaiev.github.io/CometFx-page/img/CometFX-Logo.json' // the path to the animation json
+				path: logo.dataset.logourl // the path to the animation json
 			});
 		}
 
@@ -883,7 +948,7 @@ cardNewsHandler();;
 				renderer: 'svg',
 				loop: true,
 				autoplay: true,
-				path: 'https://vitaliiradaiev.github.io/CometFx-page/img/CometFX-Logo.json' // the path to the animation json
+				path: logo.dataset.logourl // the path to the animation json
 			});
 		}
 	}
@@ -924,7 +989,6 @@ cardNewsHandler();;
 			item.addEventListener('click', function (e) {
 				e.preventDefault();
 				const id = e.target.getAttribute('href').replace('#', '');
-				console.log(id)
 				document.querySelectorAll('.tabs-block__triggers').forEach((child) => {
 					child.classList.remove('active');
 				});

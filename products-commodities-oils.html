@@ -34,10 +34,11 @@
 		</button>
 
 		<div class="header__logo logo">
-			<a href="#">
+			<a href="#" data-logourl="https://vitaliiradaiev.github.io/CometFx-page/img/CometFX-Logo.json">
 
 			</a>
 		</div>
+
 		<nav class="header__menu menu">
 			<div class="menu__item">
 				<a class="" href="#">Products</a>
@@ -122,10 +123,12 @@
 			</div>
 		</nav>
 		<form action="/" class="header__language language">
-			<select name="language" id="language" class="language__select">
-				<option value="En" selected>English</option>
-				<option value="Tr">Turkish</option>
-			</select>
+			<div class="language__title"><span>En</span></div>
+			<div class="language__list">
+				<a class="language__item _active" href="#" data-value="еr">Turkish</a>
+				<a class="language__item " href="#" data-value="еn">English</a>
+				<a class="language__item " href="#" data-value="Ua">Ukraine</a>
+			</div>
 		</form>
 	</div>
 </header>
@@ -408,7 +411,7 @@
 					<p>
 						Comet FX (Registered Name is Comet Capital Limited), 3 ½ Miles Philip S.W. Goldson Highway, Belize City, Belize C.A., is incorporated under registered number 173,633 IBC by the Registrar of International Business Companies ACT, Chapter 270 of the Laws of Belize, Revised Edition 2011. Trading Forex (foreign exchange) or CFDs (contracts for difference) on margin carries a high level of risk and may not be suitable for all investors. There is a possibility that you may sustain a loss equal to or greater than your entire investment. Therefore, you should not invest or risk money that you cannot afford to lose. Before using Comet Capital Ltd services, please acknowledge all of the risks associated with trading. The content of this website must not be construed as personal advice. We recommend that you seek advice from an independent financial advisor.
 					</p>
-					<div class="statement__btn-close icon-angle-right">
+					<div class="statement__btn-close icon-angle-right" data-readall="Example" data-close="Example 2">
 						Read All
 					</div>
 				</div>
